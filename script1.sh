@@ -12,13 +12,13 @@ done
 
 region_name=$(grep $code_region codes_regions | cut -d"," -f2)
 
-if [ -z $region_name ];then
+if [ -z "$region_name" ];then
 	echo "Le code de région $code_region est erroné."
 	exit 1
 fi
 
 
-grep $region_name cities.csv | cut -d"," -f2,7 > /tmp/villes_departements
-grep $region_name cities.csv | cut -d"," -f3 > /tmp/zip_codes
+grep "$region_name" cities.csv | cut -d"," -f2,7 > /tmp/villes_departements
+grep "$region_name" cities.csv | cut -d"," -f3 > /tmp/zip_codes
 
 paste /tmp/villes_departements /tmp/zip_codes -d"," | sort
